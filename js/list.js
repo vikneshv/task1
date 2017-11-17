@@ -1,3 +1,20 @@
+
+$('#myInput').keypress(function (event) {
+    event.stopPropagation();
+ var keycode = (event.keyCode ? event.keyCode : event.which);
+    if (keycode == '13') {
+        console.log('enter');
+        if ($(this).val() != '') {
+            var todo = $(this).val();
+            console.log(todo);
+            createTodo(todo);
+        } else {
+
+        }
+    }
+});
+
+
 var API_KEY = "https://jsonplaceholder.typicode.com/todos";
 
 (function  {
@@ -8,21 +25,6 @@ var API_KEY = "https://jsonplaceholder.typicode.com/todos";
         });
     });
 })(jQuery);
-
-$('#myInput').keypress(function (event) {
-    event.stopPropagation();
- var keycode = (event.keyCode ? event.keyCode : event.which);
-    if (keycode == '13') {
-        console.log('You pressed "enter key" in textbox');
-        if ($(this).val() != '') {
-            var todo = $(this).val();
-            console.log(todo);
-            createTodo(todo);
-        } else {
-
-        }
-    }
-});
 
 function createTodo(text) {
     var markup = '<li><input type="checkbox" id="mycheckbox" class="done"/>' + text + '<span class="glyphicon glyphicon-pencil"></span></li>';
