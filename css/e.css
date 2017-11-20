@@ -36,24 +36,44 @@
   #header{
     border-radius: 10px;
     background-color: #39bbf7;
-    padding: 30px 40px;
     color: rgb(51, 23, 23);
-    height: 130;
     
+    padding: 5px;
+    text-align: center;
+    font-family: Arial, sans-serif;
   }
-  #header text{
+ 
+  #header h2{
  
     
-   margin-top: 50;
-    height: 130;
+   margin-top: 10px;
+    
     color: pink;
     text-align: center;
 
   }
-  #header myInput{
-    border-radius: 5px;
+  #inputContainer 
+  {
+    padding: 15px;
 
   }
+  #inputContainer #myInput {
+   
+    
+    border-radius: 5px;
+    
+  }
+#todolist{
+  position: absolute;
+	bottom: 50px;
+	top: 20px;
+	right: 0;
+	left: 0;
+
+
+}
+
+ 
 
   
   
