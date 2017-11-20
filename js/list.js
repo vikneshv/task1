@@ -1,8 +1,6 @@
 
-var API_KEY = "https://jsonplaceholder.typicode.com/todos/";
-var POST_URL =  "https://jsonprovider.herokuapp.com/todos/";
-let valTrue = "true";
-let valFalse = "false";
+var POST_URL ="https://jsonprovider.herokuapp.com/todos/?limit=50&sort=id+desc";
+
 
 
 
@@ -23,7 +21,7 @@ $('#myInput').keypress(function (event) {
 
 
 (function ($) {
-    $.getJSON( API_KEY).then(function (data) {
+    $.getJSON(POST_URL).then(function (data) {
         $.each(data, function (key, value) {
             $("#todolist").prepend('<li><input type="checkbox" id="mycheckbox" class="done"/>' + value.title );
             $("#mycheckbox").prop('checked', value.completed);
@@ -32,51 +30,52 @@ $('#myInput').keypress(function (event) {
 })(jQuery);
 
 
-function createTo(text) {
-    var toDo = $('#myInput').val();
-    console.log(toDo);
+function createTodo(text) {
+    var todo = $('#myInput').val();
+    console.log(todo);
     $.ajax({
-        url:API_KEY,
-        method: 'POST',
-        data: JSON.stringify({
-            title: toDo,
-            completed: false,
+        type: 'POST',
+        url: 'https://jsonprovider.herokuapp.com/todos/',
+        data: {
             userID: 1,
-        }),
-        contentType: 'application/json; charset=utf-8',
-        dataType: "JSON",
-        success: function(result){
-            console.log("posted successfully");
+            title: text,
+            completed: true,
+        },
+        success: function(data) {
+          console.log("posted successfully", data); 
         }
-
-    });
-
+      });
+   
     
-}
+
+
+
+
 
 // function createCheck(id, checked) {
     
       
-//         var PUT_URLL = POST_URL + id;
-//         $.ajax(PUT_URLL, {
-//             method: 'PUT',
-//             data: {
-//                 'completed': checked
-//             },
-//             success: function () {
-//                 alert("Changed");
-//             },
-//             error: function (e) {
-//                 console.log(e);
-//             },
-//             dataType: "JSON",
+      //  var PUT_URLL = POST_URL + id;
+      // $.ajax(PUT_URLL, {
+         //   method: 'PUT',
+         //   data: {
+         //      'completed': checked
+         //   },
+         //   success: function () {
+          //     alert("Changed");
+         //   },
+        //     error: function (e) {
+        //         console.log(e);
+         //   },
+        //     dataType: "JSON",
     
-//         });
+       //  });
 
-//     }
+  //   }
+  
 
-function createTodo(text) {
+ {
     var markup = '<li> <input type="checkbox" id="mycheckbox" class="done"/>' + text ;
     $('#todolist').prepend(markup);
     $("#myInput").val('');
-}
+}}(jQuery)
